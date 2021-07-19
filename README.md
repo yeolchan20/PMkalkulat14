@@ -1,74 +1,129 @@
-#include <iostream>
-using namespace std;
+import 'package:flutter/material.dart';
 
-int a, b, pil, hasil;
+void main() => runApp(new MyApp());
 
-int Penjumlahan ();
-int Perkalian();
-int Pengurangan ();
-int Pembagian ():
-
-int Penjumlahan () {
-   cout<<endl<<endl;
-   cout<<"--Anda Memilih Penjumlahan==\n"<<endl;
-   cout<<"Masukkan Nilai Pertama : "; cin>>a;
-   cout<<"Masukkan Nilai Kedua : "; cin>>b;
-   
-   hasil=a+b;
-   
-   cout<<"\nHasil Penjumlahan : "<<hasil<<endl<<endl;
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: 'Login Animation',
+      home: new LoginPage(),
+    );
+  }
 }
 
-int Perkalian () {
-   cout<<endl<<endl;
-   cout<<"--Anda Memilih perkalian==\n"<<endl;
-   cout<<"Masukkan Nilai Pertama : "; cin>>a;
-   cout<<"Masukkan Nilai Kedua : "; cin>>b;
-   
-   hasil=a*b;
-   
-   cout<<"\nHasil Perkalian : "<<hasil<<endl<<endl;
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key key}) : super(key: key);
+  @override
+  _LoginPageState createState() => new _LoginPageState();
 }
 
-int Pengurangan () {
-   cout<<endl<<endl;
-   cout<<"--Anda Memilih Pengurangan==\n"<<endl;
-   cout<<"Masukkan Nilai Pertama : "; cin>>a;
-   cout<<"Masukkan Nilai Kedua : "; cin>>b;
-   
-   hasil=a-b;
-   
-   cout<<"\nHasil Penjumlahan : "<<hasil<<endl<<endl;
-
+class _LoginPageState extends State<LoginPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: NetworkImage(
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-CwDJB5lOY6jSCrHGW0WhDUHXSKmuOnCc2eZoAFzSrIkoNvzwQOvl-i1-pZZRYxHdsLQ&usqp=CAU"),
+                fit: BoxFit.cover)),
+        child: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+            colors: [
+              Color.fromRGBO(162, 146, 199, 0.8),
+              Color.fromRGBO(51, 51, 63, 0.9)
+            ],
+            begin: FractionalOffset.topCenter,
+            end: FractionalOffset.bottomCenter,
+          )),
+          child:
+              ListView(padding: const EdgeInsets.all(0.0), children: <Widget>[
+            Stack(
+              alignment: AlignmentDirectional.bottomCenter,
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(top: 270.0),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                              padding: const EdgeInsets.all(
+                            10.0,
+                          )),
+                          TextField(
+                            decoration: InputDecoration(
+                                icon: Icon(
+                                  Icons.person_outline,
+                                  color: Colors.white,
+                                ),
+                                hintText: "Username"),
+                          ),
+                          Padding(
+                              padding: const EdgeInsets.all(
+                            10.0,
+                          )),
+                          TextField(
+                            decoration: InputDecoration(
+                                icon: Icon(
+                                  Icons.lock_outline,
+                                  color: Colors.white,
+                                ),
+                                hintText: "Password"),
+                          ),
+                          FlatButton(
+                            padding:
+                                const EdgeInsets.only(top: 220.0, bottom: 30.0),
+                            onPressed: null,
+                            child: Text(
+                              "dont have an account? Sign Up here",
+                              style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w300,
+                                  letterSpacing: 0.5),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+                new SignIn()
+              ],
+            )
+          ]),
+        ),
+      ),
+    );
+  }
 }
 
-int Pembagian () {
-	cout<<"\n\n";
-	cout<<"--Anda Memilih Pembagian==\n"<<endl;
-	cout<<"Masukan Nilai Pertama : "; cin>>a;
-	cout<<"Masukan NIlai Kedua : "; cin>>b;
-	
-	hasil = a / b;
-	
-	cout<<"\nHasil Pembagian : "<<hasil<<endl<<endl;
-}
-
-int main () {
-   cout<<"Kalkulator Sederhana : "<<endl;
-   cout<<"1. Penjumlahan"<<endl;
-   cout<<"2. Perkalian"<<endl;
-   cout<<"3. Pengurangan"<<endl;
-   cout<<"4. Pembagian"<<endl;
-   
-   cout<<"Pilihan : ";
-   cin>>pil;
-   
-   switch (pil) {
-      case 1: Penjumlahan (); break;
-      case 2: Perkalian ();break;
-      case 3: Pengurangan (); break;
-      case 4: Pembagian (); break;
-      
-      default: cout<<"Pilihan Tidak Tersedia !!";
-   }
+class SignIn extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Padding(
+      padding: const EdgeInsets.all(60.0),
+      child: new Container(
+        alignment: FractionalOffset.center,
+        width: 320.0,
+        height: 60.0,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(const Radius.circular(30.0))),
+        child: Text(
+          "Sign In",
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 20.0,
+              fontWeight: FontWeight.w300,
+              letterSpacing: 0.3),
+        ),
+      ),
+    );
+  }
 }
